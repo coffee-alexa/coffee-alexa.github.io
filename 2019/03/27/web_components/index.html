@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          About - Alex_Jones | Blog
+          An Introduction Web Components - Alex_Jones | Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/about/">
+    <link rel="canonical" href="http://yoursite.com/2019/03/27/web_components/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/about.jpg')
-            /*page*/
+            background-image: url('/img/404.jpg')
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>About</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">be somebody</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
+                            
+                        </div>
+                        <h1>An Introduction Web Components</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Alex on
+                            2019-03-27
+                        </span>
                     </div>
                 
 
@@ -191,194 +199,169 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <h3><span id="一句话">一句话</span></h3>
-<blockquote>
-<p>I wanna be a jeek</p>
-</blockquote>
-<h3><span id="关于我">关于我</span></h3>
-<blockquote>
-<p>即将步入工作岗位的苦逼大学生</p>
-<p>想学的那么多，时间却又那么少</p>
-</blockquote>
-<h3><span id="兴趣方向">兴趣方向</span></h3>
-<blockquote>
-<p>前端开发</p>
-<p>嘛，以后会学很多的</p>
-<p>想去阿里</p>
-</blockquote>
-<h3><span id="联系我">联系我</span></h3>
-<blockquote>
-<p>Email: <a href="mailto:you19974@qq.com" target="_blank" rel="noopener">you19974@qq.com</a></p>
-</blockquote>
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <h3><span id="an-introduction-web-components">An Introduction Web Components</span></h3>
+<p>作者：Caleb Williams</p>
+<p>译者：Alex</p>
+<hr>
+<h3><span id="web组件的介绍">web组件的介绍</span></h3>
+<hr>
+<blockquote>
+<p>前端开发正在以惊人的速度发展。从无数的文章，教程 和 推特主题哀叹曾经原来的技术栈是多么简单 可以看出。在这篇文章，我会讨论为什么web组件是一个很棒的提升用户体验的工具，并且没有复杂的架构 和 构造步骤，还不必冒着过时的风险。在随后的五个部分，我们会深入了解每个规范，</p>
+<p>这个系列假设你有了html，css,  javascript的基础认知，如果你觉得自己在这些方面有欠缺，不必担心，构建自定义元素实际上减少前端开发的复杂度。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>文章系列</p>
+<ol>
+<li>介绍前端组件</li>
+<li>制作可重复使用的前端模板</li>
+<li>重头开始创建自定义元素</li>
+<li>封装 shadow dom 的风格和结构</li>
+<li>web组件的高级工具</li>
+</ol>
+</blockquote>
+<hr>
+<h3><span id="什么是web组件">什么是web组件？</span></h3>
+<p>web组件由三种独立的技术组成，这些技术可以一起使用：</p>
+<ol>
+<li>自定义元素，很简单，这是完全有效的HTML元素，包括使用一组JavaScript API 制作的自定义模板，行为和标记名称（e.g.<one-dialog>）。defined in the HTML Living Standard specification</one-dialog></li>
+<li>Shadow DOM，能隔离CSS和JavaScript，像是<iframe>。</iframe></li>
+<li>HTML模板，HTML中用户自定义的模板，在调用之前不会呈现</li>
+</ol>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/03/26/翻越那道墙墙/" data-toggle="tooltip" data-placement="top" title="翻越那道墙">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
-                <!-- 
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-                    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+                <!--  -->
+
+                <!-- duoshuo Share start -->
                 
-                    <div class="aplayer"
-                        data-id="2423410161"
-                        data-server="netease"
-                        data-type="playlist"
-                        data-fixed="false" >
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
+                        
                     </div>
-                 -->
-
-                <!-- 如果开启评论功能 -->
+                </section>
                 
-                    <hr>
 
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-        
-            
-        
-            
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/avatar/headImg.png" />
-        
 
-        
-            <p>Stay hungry,Stay foolish</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-                <li>
-                    <a target="_blank" href="https://www.zhihu.com/people/jia-bing-rui">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                        </span>
-                    </a>
-                </li>
-            
 
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/coffee-alexa">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2019/03/27/web_components/">An Introduction Web Components</a>
-        </li>
-      
-        <li>
-          <a href="/2019/03/26/翻越那道墙墙/">翻越那道墙</a>
-        </li>
-      
-        <li>
-          <a href="/2019/03/22/hello-world/">Hello World</a>
-        </li>
-      
-    </ul>
-  </div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        <hr>
-    
-        <!-- Friends Blog -->
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
