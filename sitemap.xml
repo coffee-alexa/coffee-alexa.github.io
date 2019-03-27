@@ -2,18 +2,8 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>http://yoursite.com/post-sitemap.xml</loc>
-        <lastmod>2019-03-27T02:55:20.197Z</lastmod>
-    </sitemap>
-
-    <sitemap>
         <loc>http://yoursite.com/page-sitemap.xml</loc>
         <lastmod>2019-03-24T13:49:58.798Z</lastmod>
-    </sitemap>
-
-    <sitemap>
-        <loc>http://yoursite.com/tag-sitemap.xml</loc>
-        
     </sitemap>
 
 </sitemapindex>
