@@ -237,10 +237,52 @@
 <h3><span id="什么是web组件">什么是web组件？</span></h3>
 <p>web组件由三种独立的技术组成，这些技术可以一起使用：</p>
 <ol>
-<li>自定义元素，很简单，这是完全有效的HTML元素，包括使用一组JavaScript API 制作的自定义模板，行为和标记名称（e.g.&lt;my-dialog&gt;）。defined in the HTML Living Standard specification</li>
-<li>Shadow DOM，能隔离CSS和JavaScript，像是&lt;iframe&gt;。</li>
-<li>HTML模板，HTML中用户自定义的模板，在调用之前不会呈现</li>
+<li>自定义元素，很简单，这是完全有效的HTML元素，包括使用一组JavaScript API 制作的自定义模板，行为和标记名称（e.g.<code>&lt;one-dialog&gt;</code>）。<a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements" target="_blank" rel="noopener">defined in the HTML Living Standard specification</a>.</li>
+<li>Shadow DOM，能隔离CSS和JavaScript，像是<code>&lt;iframe&gt;</code>。 <a href="https://dom.spec.whatwg.org/#shadow-trees" target="_blank" rel="noopener">defined in the Living Standard DOM specification</a></li>
+<li>HTML模板，HTML中用户自定义的模板，在调用之前不会呈现。<a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element" target="_blank" rel="noopener">defined in the HTML Living Standard specification</a>.</li>
 </ol>
+<p>这些是构成web组件的规范</p>
+<p>Web组件通常在大多数主流浏览器都是可用的，除了Microsoft Edge and Internet Explorer 11，但是他们的存在填补了空白。</p>
+<p>参考任何一个web组件都是技术全面的，因为他的术语有些过载了。因此，每种技术都可以独立使用或与其它技术组合。换句话说，他们并不排斥。</p>
+<p>让我们快速浏览一些前三个小点。我们将在本系列的其他文章中深入探讨它们。</p>
+<h3><span id="自定义元素-custom-elements">自定义元素 (Custom elements)</span></h3>
+<p>正如名字暗示的，自定义元素是HTML元素，例如<code>&lt;div&gt;</code> <code>&lt;section</code>&gt; 或 <code>&lt;article&gt;</code>，但我们可以通过浏览器API定义自己的名称。自定义元素很像那些标准HTML元素——写在尖括号里面——除了总是有一个破折号，比如 <code>news-slider</code> 或者 <code>bacon-cheeseburger</code> 。浏览器厂商已承诺不会创建名称中包含短划线的新内置元素，以避免冲突。</p>
+<p>自定义元素包含自己的语义、表现、标记 并且可以跨框架和浏览器共享</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">    connectedCallback() &#123;</span><br><span class="line">        <span class="keyword">this</span>.innerHTML = <span class="string">`&lt;h1&gt;Hello world&lt;/h1&gt;`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">customElements.define(<span class="string">'my-component'</span>, MyComponent)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">my-component</span>&gt;</span><span class="tag">&lt;<span class="name">my-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们定义了 <code>my-component</code> ,我们自己的HTMLElement。固然 ，它做的不多，但这是自定义元素的基本构建块。所有的自定义组件都必须以某种方式扩展HTMLElement才能在浏览器中注册</p>
+<blockquote>
+<p>译者注，Element 包括 HTMLElement 和 SVGElement。此处应特指Element 是 HTMLElement</p>
+</blockquote>
+<p>自定义元素不依赖第三方框架而存在，并且浏览器供应商应致力于规范的持续向后兼容，除了保证根据规范编写的组件不会破坏API的更改。此外，这些组件通常可以和现有的最流行的框架一起使用，包括Angular，React，Vue和其他很少的一部分。</p>
+<h3><span id="shadow-dom">Shadow DOM</span></h3>
+<p>shadowDOM是DOM的封装版本。这允许开发者有效地将DOM片段彼此隔离，他们可以被css选择器选择，并添加相关联的样式。通常，document范围内的任何内容都被称为light DOM，而shadow root中的任何内容被称为shadow DOM</p>
+<p>使用light DOM时，可以使用document.querySelector(‘selector’)选择某个元素或使用element.querySelector(‘selector’)选择某个元素的子元素。以同样的方式，可以通过shadowRoot.querySelector来定位shadow root 的子节点，来自对docuemt片段的参考——不同之处在于shadow root的子节点不能从light DOM中选择。例如，如果我们有一个带有shadow root的<code>&lt;button&gt;</code>，调用shadowRoot.querySelector（‘button’）将返回我们的按钮，但是不调用该文档的查询选择器将返回该元素，因为它属于不同的 DocumentOrShadowRoot实例。样式选择器的工作方式同理。</p>
+<p>在这方面，影子DOM的工作类似于<iframe>，其中内容与文档的其余部分隔离; 但是，当我们创建一个影子根时，我们仍然可以完全控制页面的那一部分，但是作用于上下文。 这就是我们所说的封装。</iframe></p>
+<p>如果您曾编写过重用相同内容的组件或依赖于CSS-in-JS工具或CSS命名策略（如BEM），那么shadow DOM有可能改善您的开发人员体验。</p>
+<h3><span id="html-templates">HTML templates</span></h3>
+<p><code>template</code>元素允许我们在HTML普通流（文档流）中删除可重复使用的代码模板，这些模板不会立即呈现，但可以在以后使用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"book-template"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> &amp;mdash; <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"author"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"books"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的示例在脚本加载模板之前不会呈现任何内容，实例化 代码并告诉浏览器如何处理它</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fragment = <span class="built_in">document</span>.getElementById(<span class="string">'book-template'</span>);</span><br><span class="line"><span class="keyword">const</span> books = [</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'The Great Gatsby'</span>, <span class="attr">author</span>: <span class="string">'F. Scott Fitzgerald'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'A Farewell to Arms'</span>, <span class="attr">author</span>: <span class="string">'Ernest Hemingway'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'Catch 22'</span>, <span class="attr">author</span>: <span class="string">'Joseph Heller'</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">books.forEach(<span class="function"><span class="params">book</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Create an instance of the template content</span></span><br><span class="line">  <span class="keyword">const</span> instance = <span class="built_in">document</span>.importNode(fragment.content, <span class="literal">true</span>);</span><br><span class="line">  <span class="comment">// Add relevant content to the template</span></span><br><span class="line">  instance.querySelector(<span class="string">'.title'</span>).innerHTML = book.title;</span><br><span class="line">  instance.querySelector(<span class="string">'.author'</span>).innerHTML = book.author;</span><br><span class="line">  <span class="comment">// Append the instance ot the DOM</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'books'</span>).appendChild(instance);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>请注意，此示例在没有任何其他Web组件技术的情况下创建模板（&lt;template id =“book-template&quot;&gt;），再次说明堆栈中的三种技术可以单独使用或共同使用。</p>
+</blockquote>
+<h3><span id="这包含了我们对web组件的介绍">这包含了我们对web组件的介绍</span></h3>
+<p>随着Web开发变得越来越复杂，像我们这样的开发人员开始使用越来越多新技术的到已经持续成熟的Web平台本身。 Web组件规范是一组低级API，随着开发人员的发展，它们将继续增长和发展。</p>
+<p>在下一篇文章中，我们将深入研究HTML模板部分。 然后，我们将讨论自定义元素和shadowDOM。 最后，我们将通过更高级别的工具以及与当今流行的库和框架的结合来完成所有工作。</p>
+<hr>
+<p>文章系列：</p>
+<ol>
+<li>An Introduction to Web Components (<em>This post</em>)</li>
+<li><a href="https://css-tricks.com/crafting-reusable-html-templates/" target="_blank" rel="noopener">Crafting Reusable HTML Templates</a></li>
+<li><a href="https://css-tricks.com/creating-a-custom-element-from-scratch" target="_blank" rel="noopener">Creating a Custom Element from Scratch</a></li>
+<li><a href="https://css-tricks.com/encapsulating-style-and-structure-with-shadow-dom/" target="_blank" rel="noopener">Encapsulating Style and Structure with Shadow DOM</a></li>
+<li><a href="https://css-tricks.com/advanced-tooling-for-web-components/" target="_blank" rel="noopener">Advanced Tooling for Web Components</a></li>
+</ol>
+<hr>
+<p>原文链接：</p>
+<p><a href="https://css-tricks.com/an-introduction-to-web-components/" target="_blank" rel="noopener">https://css-tricks.com/an-introduction-to-web-components/</a></p>
 
                 
 
