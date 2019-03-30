@@ -258,7 +258,7 @@
 <h3><span id="shadow-dom">Shadow DOM</span></h3>
 <p>shadowDOM是DOM的封装版本。这允许开发者有效地将DOM片段彼此隔离，他们可以被css选择器选择，并添加相关联的样式。通常，document范围内的任何内容都被称为light DOM，而shadow root中的任何内容被称为shadow DOM</p>
 <p>使用light DOM时，可以使用document.querySelector(‘selector’)选择某个元素或使用element.querySelector(‘selector’)选择某个元素的子元素。以同样的方式，可以通过shadowRoot.querySelector来定位shadow root 的子节点，来自对docuemt片段的参考——不同之处在于shadow root的子节点不能从light DOM中选择。例如，如果我们有一个带有shadow root的<code>&lt;button&gt;</code>，调用shadowRoot.querySelector（‘button’）将返回我们的按钮，但是不调用该文档的查询选择器将返回该元素，因为它属于不同的 DocumentOrShadowRoot实例。样式选择器的工作方式同理。</p>
-<p>在这方面，shadowDOM的工作类似于&lt;iframe&gt;，其中内容与文档的其余部分隔离; 但是，当我们创建一个影子根时，我们仍然可以完全控制页面的那一部分，但是作用于上下文。 这就是我们所说的封装。</p>
+<p>在这方面，shadowDOM的工作类似于&lt;iframe&gt;，其中内容与文档的其余部分隔离; 但是，当我们创建一个shadowRoot时，我们仍然可以完全控制页面的那一部分，但是作用于上下文。 这就是我们所说的封装。</p>
 <p>如果您曾编写过重用相同内容的组件或依赖于CSS-in-JS工具或CSS命名策略（如BEM），那么shadow DOM有可能改善您的开发人员体验。</p>
 <h3><span id="html-templates">HTML templates</span></h3>
 <p><code>template</code>元素允许我们在HTML普通流（文档流）中删除可重复使用的代码模板，这些模板不会立即呈现，但可以在以后使用。</p>
