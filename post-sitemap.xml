@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/03/31/web_components2/</loc>
+        <lastmod>2019-03-31T06:38:43.976Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/03/27/web_components/</loc>
         <lastmod>2019-03-31T04:47:10.666Z</lastmod>
         <changefreq>weekly</changefreq>
