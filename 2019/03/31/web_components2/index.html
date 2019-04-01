@@ -233,7 +233,7 @@
 <p>真正的魔法发生在document.importNode方法中。 此函数将创建模板内容的副本，并准备将其插入到另一个文档（或文档片段）中。 函数的第一个参数抓取模板的内容，第二个参数告诉浏览器对元素的DOM子树（即其所有子节点）进行深层复制。</p>
 <p>我们可以直接使用template.content，但这样做我们就会从元素中删除内容并稍后附加到文档的主体。 任何DOM节点只能在一个位置连接，因此后续使用模板的内容将导致空文档片段（基本上为空值），因为之前已迁移了内容。 使用document.importNode允许我们在多个位置重用相同模板内容的实例。</p>
 <p>然后将该节点附加到document.body中并为用户呈现。 这最终使我们能够做有趣的事情，比如为我们的用户（或我们程序的消费者）提供用于创建内容的模板，类似于我们在第一篇文章中介绍的以下演示：</p>
-<iframe name="cp_embed_1" src="https://codepen.io/calebdwilliams/embed/LqQmXN?height=300&amp;theme-id=1&amp;default-tab=result&amp;user=calebdwilliams&amp;slug-hash=LqQmXN&amp;pen-title=Template%20example&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="300" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Template example" class="cp_embed_iframe " style="width: 100%; overflow: hidden; display: block; height: 100%;" id="cp_embed_LqQmXN"></iframe>
+<iframe name="cp_embed_1" src="https://codepen.io/calebdwilliams/embed/LqQmXN?height=300&amp;theme-id=1&amp;default-tab=result&amp;user=calebdwilliams&amp;slug-hash=LqQmXN&amp;pen-title=Template%20example&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="500" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Template example" class="cp_embed_iframe " style="width: 100%; overflow: hidden; display: block; height: 100%;" id="cp_embed_LqQmXN"></iframe>
 在这个例子中，我们提供了两个模板来呈现相同的内容 ——他们编写的作者和书籍。 随着表单的更改，我们选择呈现与该值关联的模板。 使用相同的技术将允许我们最终创建一个自定义元素，该元素将使用稍后定义的模板。
 <h3><span id="the-versatility-of-template-模板的多功能性">The versatility of template |模板的多功能性</span></h3>
 <p>模板的一个有趣的事情是它们可以包含任何HTML。 这包括脚本和样式元素。 一个非常简单的示例是一个模板，它附加一个按钮，在单击它时会提醒我们。</p>
