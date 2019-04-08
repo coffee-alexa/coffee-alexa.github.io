@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/04/08/NPM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+        <lastmod>2019-04-08T07:52:12.328Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/04/08/web_components3/</loc>
+        <lastmod>2019-04-01T05:36:36.943Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/03/31/web_components2/</loc>
-        <lastmod>2019-04-01T03:57:28.094Z</lastmod>
+        <lastmod>2019-04-01T04:10:30.011Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,15 +32,7 @@
 
     <url>
         <loc>http://yoursite.com/2019/03/27/web_components/</loc>
-        <lastmod>2019-03-31T04:47:10.666Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/03/26/%E7%BF%BB%E8%B6%8A%E9%82%A3%E9%81%93%E5%A2%99%E5%A2%99/</loc>
-        <lastmod>2019-03-27T09:12:32.396Z</lastmod>
+        <lastmod>2019-03-30T14:51:12.954Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -33,6 +41,14 @@
     <url>
         <loc>http://yoursite.com/2019/03/22/hello-world/</loc>
         <lastmod>2019-03-27T09:04:00.762Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/03/26/%E7%BF%BB%E8%B6%8A%E9%82%A3%E9%81%93%E5%A2%99%E5%A2%99/</loc>
+        <lastmod>2019-03-26T15:06:02.745Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

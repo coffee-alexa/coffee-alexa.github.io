@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Alex_Jones | Blog
+          Creating a Custom Element from Scratch - Alex_Jones | Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/tags/FQ/">
+    <link rel="canonical" href="http://yoursite.com/2019/04/08/web_components3/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/archive.jpg')
-            /*page*/
+            background-image: url('/img/header_img/404.jpg')
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>Alex</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">个人博客</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
+                            
+                        </div>
+                        <h1>Creating a Custom Element from Scratch</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Alex on
+                            2019-04-08
+                        </span>
                     </div>
                 
 
@@ -134,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -191,238 +199,165 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h3><span id="creating-a-custom-element-from-scratch">Creating a Custom Element from Scratch</span></h3>
+<p>作者：Caleb Williams</p>
+<p>译者：Alex</p>
+<hr>
+<p>在上一篇文章中，我们通过创建文档中的HTML template  实践了 Web Components ，但在我们需要之前不会渲染。</p>
+<p>接下来，我们将继续创建对话框组件的自定义元素版本，目前只使用HTMLTemplateElement：</p>
+<iframe name="cp_embed_1" src="https://codepen.io/calebdwilliams/embed/JzjLyQ?height=300&amp;theme-id=1&amp;default-tab=result&amp;user=calebdwilliams&amp;slug-hash=JzjLyQ&amp;pen-title=Dialog%20with%20template%20with%20script&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="300" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Dialog with template with script" class="cp_embed_iframe " style="width: 100%; overflow: hidden; display: block; height: 333px;" id="cp_embed_JzjLyQ"></iframe>
+<p>因此，让我们通过创建一个实时使用我们的模板＃dialog-template元素的自定义元素来推进。</p>
+<h3><span id="creating-a-custom-element创造自定义元素">Creating a custom element|创造自定义元素</span></h3>
+<p>Web Components 最重要的是自定义元素。customElements API为我们提供了一个定义自定义HTML标记的路径，可以在包含定义类的任何文档中使用。</p>
+<p>可以把它想象成React或Angular组件（例如 <code>&lt;MyCard /&gt;</code>），但没有React或Angular依赖。 原生自定义元素如下所示：<code>&lt;my-card&gt; &lt;/ my-card&gt;</code>。 更重要的是，将它视为一个标准元素，可以在你的React，Angular，Vue 等 应用程序中使用，省去不必要的麻烦。</p>
+<p>本质上，自定义元素由两部分组成：标记名称和扩展内置HTMLElement类的类。 我们的自定义元素的最基本版本如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class OneDialog extends HTMLElement &#123;</span><br><span class="line">  connectedCallback() &#123;</span><br><span class="line">    this.innerHTML = `<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>`;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">customElements.define('one-dialog', OneDialog);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：在整个自定义元素中，此值是对自定义元素实例的引用。</p>
+</blockquote>
+<p>在上面的示例中，我们定义了一个新的符合标准的HTML元素，<code>&lt;one-dialog&gt; &lt;/ one-dialog&gt;</code>。 它没有做太多…但是。 现在，在任何HTML文档中使用 <code>&lt;one-dialog&gt;</code> 标签将创建一个新元素，其中<code>&lt;h1&gt;</code>标签为“Hello，World！”</p>
+<p>我们肯定会想要更强大的东西，我们很幸运。 在上一篇文章中，我们研究了为对话框创建模板，因为我们可以访问该模板，所以让我们在自定义元素中使用它。 我们在该示例中添加了一个脚本标记来执行一些对话魔术。 让我们暂时删除它，因为我们将把我们的逻辑从HTML模板移动到自定义元素类中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class OneDialog extends HTMLElement &#123;</span><br><span class="line">  connectedCallback() &#123;</span><br><span class="line">    const template = document.getElementById('one-dialog');</span><br><span class="line">    const node = document.importNode(template.content, true);</span><br><span class="line">    this.appendChild(node);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，我们定义了自定义元素（&lt;one-dialog&gt;），并指示浏览器呈现HTML模板中包含调用自定义元素的内容。</p>
+<p>我们的下一步是将逻辑移到我们的组件类中。</p>
+<h3><span id="custom-element-lifecycle-methods-自定义元素生命周期方法">Custom element lifecycle methods |自定义元素生命周期方法</span></h3>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
-                    <span class="tag-text">2019</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-31
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/03/31/web_components2/" style="color: #0085a1">
-                        <span>
-                            Crafting Reusable HTML Templates
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-27
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/03/27/web_components/" style="color: #0085a1">
-                        <span>
-                            An Introduction Web Components
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-26
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/03/26/翻越那道墙墙/" style="color: #0085a1">
-                        <span>
-                            翻越那道墙
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-22
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/03/22/hello-world/" style="color: #0085a1">
-                        <span>
-                            Hello World
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/04/08/NPM常用命令/" data-toggle="tooltip" data-placement="top" title="NPM常用命令">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
-            </div>
-            
-
-
-        </div>
-    </div>
-</div>
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
                 <!--  -->
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-        
-            
-        
-            
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/avatar/headImg.png" />
-        
 
-        
-            <p>Stay hungry,Stay foolish</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-                <li>
-                    <a target="_blank" href="https://www.zhihu.com/people/jia-bing-rui">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                        </span>
-                    </a>
-                </li>
-            
 
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/coffee-alexa">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2019/03/31/web_components2/">Crafting Reusable HTML Templates</a>
-        </li>
-      
-        <li>
-          <a href="/2019/03/27/web_components/">An Introduction Web Components</a>
-        </li>
-      
-        <li>
-          <a href="/2019/03/26/翻越那道墙墙/">翻越那道墙</a>
-        </li>
-      
-        <li>
-          <a href="/2019/03/22/hello-world/">Hello World</a>
-        </li>
-      
-    </ul>
-  </div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+    article {
+        overflow: hidden;
+    }
+</style>
 
-        <hr>
-    
-        <!-- Friends Blog -->
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
