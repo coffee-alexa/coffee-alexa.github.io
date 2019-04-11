@@ -14,7 +14,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Vue生命周期 - Alex_Jones | Blog
+          Vue基础知识 - Alex_Jones | Blog
         
     </title>
 
@@ -91,7 +91,7 @@
                               <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
                             
                         </div>
-                        <h1>Vue生命周期</h1>
+                        <h1>Vue基础知识</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Alex on
@@ -448,8 +448,6 @@
 <li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Vue() //本身也是一个组件</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const component = &#123;	//定义组件</span><br><span class="line">    template: `</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">    		&lt;input type=&quot;text&quot; v-model=&quot;&quot;text&gt;</span><br><span class="line">    	&lt;/div&gt;</span><br><span class="line">    `</span><br><span class="line">&#125; </span><br><span class="line">Vue.component(&apos;Comp&apos;, component) //全局注册组件(注册到Vue上了)</span><br></pre></td></tr></table></figure>
 </li>
@@ -461,6 +459,8 @@
 <ul>
 <li>data 里面要用函数return值, 防止全局共用值</li>
 <li>子组件用props取父组件传来的值, props的值有默认属性 type, required, default</li>
+<li>子组件需要 更改 父组件传过来的值，父组件声明一个更改自己data的方法，把方法传递给子组件，子组件通过调用方法实现更改父组件的值。（不建议直接更改props里的值）</li>
+<li></li>
 </ul>
 </li>
 </ul>
