@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/04/15/vscode%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C/</loc>
+        <lastmod>2019-04-15T13:02:48.888Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/04/08/NPM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+        <lastmod>2019-04-15T11:31:15.460Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/04/08/vue%E5%9F%BA%E7%A1%80/</loc>
         <lastmod>2019-04-09T04:48:25.310Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +33,6 @@
     <url>
         <loc>http://yoursite.com/2019/04/09/javaScript%E6%A8%A1%E5%9D%97%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/</loc>
         <lastmod>2019-04-09T04:34:28.510Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/04/08/NPM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-        <lastmod>2019-04-08T07:52:12.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
