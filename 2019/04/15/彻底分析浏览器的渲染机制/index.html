@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          vscode快捷操作 - Alex_Jones | Blog
+          简单分析浏览器的机制 - Alex_Jones | Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2019/04/15/vscode快捷操作/">
+    <link rel="canonical" href="http://yoursite.com/2019/04/15/彻底分析浏览器的渲染机制/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,10 +88,10 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#vscode" title="vscode">vscode</a>
+                              <a class="tag" href="/tags/#Browser" title="Browser">Browser</a>
                             
                         </div>
-                        <h1>vscode快捷操作</h1>
+                        <h1>简单分析浏览器的机制</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Alex on
@@ -212,114 +212,115 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3><span id="敲代码常用的">敲代码常用的</span></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ctrl + →/←</td>
-<td>光标向左/右移动一个字符串的位移</td>
-</tr>
-<tr>
-<td>home/end</td>
-<td>光标移动到行首/尾</td>
-</tr>
-<tr>
-<td>ctrl + home/end</td>
-<td>光标移动到页首/尾</td>
-</tr>
-<tr>
-<td>ctrl + [ / ]</td>
-<td>行缩进</td>
-</tr>
-<tr>
-<td>shift + →/←</td>
-<td>光标向左/右移动一个字符距离，并选中</td>
-</tr>
-<tr>
-<td>shift + ctrl + →/←</td>
-<td>光标向左/右移动一个字符串距离，并选中</td>
-</tr>
-<tr>
-<td>ctrl + /</td>
-<td>注释光标所在的一行</td>
-</tr>
-<tr>
-<td>ctrl + d</td>
-<td>选中代码片段后按下操作，在相同代码片段后添加光标 (多光标操作)</td>
-</tr>
-<tr>
-<td>alt + 鼠标左键</td>
-<td>在鼠标点击处出现光标(多光标操作)</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div&gt;(p*2&gt;span.aaa)</span><br></pre></td></tr></table></figure>
-<p>按tap键可以直接展开成嵌套格式的代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"aaa"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"aaa"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3><span id="看源码常用的">看源码常用的</span></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alt + →/←</td>
-<td>移动到 上一个/下一个 页面</td>
-</tr>
-<tr>
-<td>ctrl + shift+ [ / ]</td>
-<td>折叠/展开 当前区域代码</td>
-</tr>
-<tr>
-<td>ctrl + k 再按 ctrl + 0 / j</td>
-<td>折叠/展开 当页代码</td>
-</tr>
-<tr>
-<td>F12</td>
-<td>选中函数名后按下操作，跳转到此函数定义的地方</td>
-</tr>
-<tr>
-<td>ctrl + F12</td>
-<td>选中函数名后按下操作，跳转到此函数定义的地方，(不会跳转页面)</td>
-</tr>
-<tr>
-<td>ctrl + F</td>
-<td>搜索</td>
-</tr>
-</tbody>
-</table>
-<h3><span id="其他">其他</span></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ctrl + `</td>
-<td>打开vscode集成的命令行</td>
-</tr>
-<tr>
-<td>ctrl + b</td>
-<td>隐藏文件管理栏</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+                <h2><span id="浏览器是多进程process的">浏览器是多进程(process)的</span></h2>
+<p><code>google</code>浏览器，按下 <code>shift + esc</code> 可以调出浏览器的任务管理器。</p>
+<h4><span id="包含以下进程">包含以下进程</span></h4>
+<ul>
+<li>
+<p>浏览器（Browser）：控制 “Chrome” 应用程序，包括地址栏、书签、后退和前进按钮等。还需要处理 Web 浏览器的权限管理，例如网络请求和文件访问。</p>
+</li>
+<li>
+<p>渲染器（Renderer）：控制选项卡 (tab) 内，网站里显示的所有内容。也就是浏览器内核，负责生成页面。一个tab页就是一个render进程。</p>
+</li>
+<li>
+<p>插件（Plugin）：控制网站使用的插件，例如：Flash，chrome插件。</p>
+</li>
+<li>
+<p>GPU：独立于其他进程，专用于处理 GPU 任务，它被分成不同的进程，因为 GPU 会处理来自多个进程的请求，并将它们绘制在相同的 Surface 中。</p>
+</li>
+</ul>
+<h4><span id="多进程的优势">多进程的优势</span></h4>
+<ul>
+<li>避免单个page crash影响整个浏览器</li>
+<li>避免第三方插件crash影响整个浏览器</li>
+<li>多进程充分利用多核优势</li>
+<li>方便使用沙盒模型隔离插件等进程，提高浏览器稳定性</li>
+</ul>
+<p>简单来说是，一个页面，插件崩溃，不影响整体使用</p>
+<h4><span id="其他">其他</span></h4>
+<p>浏览器刚被设计出来的时候是单线程的，当初网页的资源占有率低，一个进程可以处理多个网页。今天，大量网页变得日益复杂。把所有网页都放进一个进程的浏览器面临在健壮性，响应速度，安全性方面的挑战。Chrome浏览器使用多个进程来隔离不同的网页。</p>
+<p>因此在Chrome中打开一个网页相当于起了一个进程。</p>
+<h4><span id="进程和线程">进程和线程</span></h4>
+<p>这段只是简单说说</p>
+<p>进程要cpu分配资源，也就是内存和cpu占用情况。单核cpu某一时刻只能运行一个进程，同时运行多个进程靠的是cpu快速切换不同的进程。进程间沟通较困难，但一个进程崩溃不会影响其他进程</p>
+<p>线程是在进程中的，共享进程的内存和cpu资源。线程可以并发执行。线程间沟通容易，但一个线程崩溃整个进程就会崩溃，其他线程也会受影响</p>
+<h3><span id="浏览器内核渲染器renderer渲染进程">浏览器内核(渲染器，Renderer，渲染进程)</span></h3>
+<p>简单理解：页面的渲染，JS的执行，事件的循环，都在这个进程内进行。</p>
+<p>浏览器的渲染进程是多线程的，让我们看看都包含哪些<strong>线程：</strong></p>
+<ul>
+<li>GUI渲染线程（WebCore，渲染引擎）
+<ul>
+<li>负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。</li>
+<li>当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行</li>
+<li>注意，<strong>GUI渲染线程与JS引擎线程是互斥的</strong>，当JS引擎执行时GUI线程会被挂起（相当于被冻结了），GUI更新会被保存在一个队列中<strong>等到JS引擎空闲时</strong>立即被执行。</li>
+</ul>
+</li>
+<li>JS引擎线程
+<ul>
+<li>也称为JS内核，负责处理Javascript脚本程序。（例如V8引擎）</li>
+<li>JS引擎线程负责解析Javascript脚本，运行代码。</li>
+<li>JS引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序</li>
+<li>同样注意，<strong>GUI渲染线程与JS引擎线程是互斥的</strong>，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</li>
+</ul>
+</li>
+<li>事件触发线程
+<ul>
+<li>归属于浏览器而不是JS引擎，用来控制事件循环（可以理解，JS引擎自己都忙不过来，需要浏览器另开线程协助）</li>
+<li>当JS引擎执行代码块如setTimeOut时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX异步请求等），会将对应任务添加到事件线程中</li>
+<li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理</li>
+<li>注意，由于JS的单线程关系，所以这些待处理队列中的事件都得排队等待JS引擎处理（当JS引擎空闲时才会去执行）</li>
+</ul>
+</li>
+<li>定时触发器线程
+<ul>
+<li>传说中的<code>setInterval</code>与<code>setTimeout</code>所在线程</li>
+<li>浏览器定时计数器并不是由JavaScript引擎计数的,（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确）</li>
+<li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲后执行）</li>
+<li>注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。</li>
+</ul>
+</li>
+<li>异步http请求线程
+<ul>
+<li>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求</li>
+<li>将检测到状态变更时，如果设置有回调函数，异步线程就<strong>产生状态变更事件</strong>，将这个回调再放入事件队列中。再由JavaScript引擎执行。</li>
+</ul>
+</li>
+</ul>
+<p>js是单线程，异步操作，正式因为有这些浏览器提供的线程，才会有异步操作。单线程指的是只有一个运行js的主线程</p>
+<h2><span id="梳理浏览器内核中线程之间的关系">梳理浏览器内核中线程之间的关系</span></h2>
+<h4><span id="gui渲染线程与js引擎线程互斥">GUI渲染线程与JS引擎线程互斥</span></h4>
+<p>为了防止冲突</p>
+<p>由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和GUI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时GUI线程会被挂起， GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行。</p>
+<h4><span id="js阻塞页面加载">JS阻塞页面加载</span></h4>
+<p>从上述的互斥关系，可以推导出：JS如果执行时间过长，GUI线程无法运行，页面无法渲染</p>
+<p>所以，要尽量避免JS执行时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。</p>
+<h4><span id="webworkerjs的多线程">WebWorker，JS的多线程？</span></h4>
+<p>前文中有提到JS引擎是单线程的，而且JS执行时间过长会阻塞页面，那么JS就真的对cpu密集型计算无能为力么？</p>
+<p>所以，后来HTML5中支持了<code>Web Worker</code>。</p>
+<ul>
+<li>创建Worker时，JS引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作DOM）</li>
+<li>JS引擎线程与worker线程间通过特定的方式通信（postMessage API，需要通过序列化对象来与线程交互特定的数据）</li>
+</ul>
+<p>所以，如果有非常耗时的工作，请单独开一个Worker线程，这样里面不管如何翻天覆地都不会影响JS引擎主线程， 只待计算出结果后，将结果通信给主线程即可，perfect!</p>
+<p>而且注意下，<strong>JS引擎是单线程的</strong>，这一点的本质仍然未改变，Worker可以理解是浏览器给JS引擎开的外挂，专门用来解决那些大量计算问题。</p>
+<p>其它，关于Worker的详解就不是本文的范畴了，因此不再赘述。</p>
+<h3><span id="webworker与sharedworker">WebWorker与SharedWorker</span></h3>
+<p>既然都到了这里，就再提一下<code>SharedWorker</code>（避免后续将这两个概念搞混）</p>
+<ul>
+<li>WebWorker只属于某个页面，不会和其他页面的Render进程（浏览器内核进程）共享
+<ul>
+<li>所以Chrome在Render进程中（每一个Tab页就是一个render进程）创建一个新的线程来运行Worker中的JavaScript程序。</li>
+</ul>
+</li>
+<li>SharedWorker是浏览器所有页面共享的，不能采用与Worker同样的方式实现，因为它不隶属于某个Render进程，可以为多个Render进程共享使用
+<ul>
+<li>所以Chrome浏览器为SharedWorker单独创建一个进程来运行JavaScript程序，在浏览器中每个相同的JavaScript只存在一个SharedWorker进程，不管它被创建多少次。</li>
+</ul>
+</li>
+</ul>
+<p>看到这里，应该就很容易明白了，本质上就是进程和线程的区别。SharedWorker由独立的进程管理，WebWorker只是属于render进程下的一个线程</p>
+<h2><span id="梳理浏览器渲染流程">梳理浏览器渲染流程</span></h2>
 
                 
 
@@ -327,13 +328,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/04/15/彻底分析浏览器的渲染机制/" data-toggle="tooltip" data-placement="top" title="简单分析浏览器的机制">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2019/04/09/javaScript模块的发展史/" data-toggle="tooltip" data-placement="top" title="js模块发展史">Next Post &rarr;</a>
+                            <a href="/2019/04/15/vscode快捷操作/" data-toggle="tooltip" data-placement="top" title="vscode快捷操作">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -391,7 +388,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#vscode" title="vscode">vscode</a>
+                          <a class="tag" href="/tags/#Browser" title="Browser">Browser</a>
                         
                     </div>
                 </section>
