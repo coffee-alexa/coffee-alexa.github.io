@@ -15,6 +15,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/03/22/hello-world/</loc>
+        <lastmod>2019-04-17T08:45:04.971Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/04/15/vscode%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C/</loc>
         <lastmod>2019-04-15T13:09:38.776Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -65,14 +73,6 @@
     <url>
         <loc>http://yoursite.com/2019/03/27/web_components/</loc>
         <lastmod>2019-03-30T14:51:12.954Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/03/22/hello-world/</loc>
-        <lastmod>2019-03-27T09:04:00.762Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

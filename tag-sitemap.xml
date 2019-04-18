@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/Hexo/</loc>
-        <lastmod>2019-03-27T09:04:00.762Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/%E7%BF%BB%E8%AF%91/</loc>
         <lastmod>2019-04-01T05:36:36.943Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,6 +25,13 @@
     <url>
         <loc>http://yoursite.com/tags/vscode/</loc>
         <lastmod>2019-04-15T13:09:38.776Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Hexo/</loc>
+        <lastmod>2019-04-17T08:45:04.971Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
